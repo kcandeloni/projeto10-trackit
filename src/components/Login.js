@@ -1,32 +1,43 @@
-import Logo from './Logo.js';
-import styled from 'styled-components';
-import { useState } from 'react';
-
+import { Logo } from '../assets/img/Logos.js';
+import { Button, Input, TextLink, Tela } from '../assets/style';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
+import { login, setToken} from './trackitService';
 
 export default function Login () {
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [password, setPassword] = useState('');
 
     function handleForm(e) {
         e.preventDefault();
         const body = {
           email,
-          senha,
+          password
         };
         console.log(body);
         setEmail('');
-        setSenha('');
+        setPassword('');
+        
+        const promise = login(body);
+
+        promise
+            .then(resposta => { 
+                console.log(resposta);
+                setToken(resposta.data.token);
+                navigate('/habitos');})
+            .catch(resposta => console.log(resposta))
     }
 
     return (
-        <Container>
+        <Tela>
             <Logo />
 
             <form onSubmit={handleForm}>
                 
-                <input
+                <Input
                 type='text'
                 placeholder='email'
                 onChange={(e) => setEmail(e.target.value)}
@@ -34,70 +45,21 @@ export default function Login () {
                 required
                 />
 
-                <input
+                <Input
                 type='password'
-                placeholder='senha'
-                onChange={(e) => setSenha(e.target.value)}
-                value={senha}
+                placeholder='password'
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 required
                 />
 
-                <button>Entrar</button>
+                <Button size='large' >Entrar</Button>
             </form>
             
 
             <Link to='/cadastro'>
-                <p>Não tem uma conta? Cadastre-se!</p>
+                <TextLink>Não tem uma conta? Cadastre-se!</TextLink>
             </Link>
-        </Container>
+        </Tela>
     );
 }
-
-const Container = styled.div`
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    input{
-        width: 303px;
-        height: 45px;
-
-        background: #FFFFFF;
-        border: 1px solid #D5D5D5;
-        border-radius: 5px;
-
-        font-weight: 400;
-        font-size: 20px;
-        padding: 0 10px;
-        margin: 6px 0;
-    }
-
-    p{
-        font-weight: 400;
-        font-size: 13.976px;
-        line-height: 17px;
-        text-decoration-line: underline;
-
-        color: #52B6FF;
-        cursor: pointer;
-    }
-
-    button{
-        width: 303px;
-        height: 45px;
-
-        background: #52B6FF;
-        border-radius: 5px;
-    }
-
-    *{
-        box-sizing: border-box;
-    }
-`;

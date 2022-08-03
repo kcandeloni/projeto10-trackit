@@ -1,46 +1,84 @@
 import { Link } from 'react-router-dom';
-import Logo from './Logo.js';
-import styled from 'styled-components';
+import { Logo } from '../assets/img/Logos.js';
+import { Button, Input, TextLink, Tela } from '../assets/style';
+import { useState } from 'react';
+
+
+import { singUp } from './trackitService';
 
 export default function Cadastro () {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [image, setImage] = useState('');
+
+    function handleForm(e) {
+        e.preventDefault();
+        const body = {  
+            email,
+            name,
+            image,
+            password
+        };
+        console.log(body);
+        setEmail('');
+        setPassword('');
+        setName('');
+        setImage('');
+
+        const promise = singUp(body);
+
+        promise
+            .then(resposta => { console.log(resposta);})
+            .catch(resposta => console.log(resposta))
+    }
+
     return (
-        <Container>
+        <Tela>
             <Logo />
+            <form onSubmit={handleForm}>
                 
+                <Input
+                type='text'
+                placeholder='email'
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
+                />
+
+                <Input
+                type='password'
+                placeholder='password'
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                required
+                />
+
+                <Input
+                type='text'
+                placeholder='name'
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                required
+                />
+
+                <Input
+                type='text'
+                placeholder='image'
+                onChange={(e) => setImage(e.target.value)}
+                value={image}
+                required
+                />
+
+                <Button size='large' >Cadastrar</Button>
+            </form>
 
 
             <Link to='/'>
-                <p>Já tem uma conta? Faça login!</p>
+                <TextLink>Já tem uma conta? Faça login!</TextLink>
             </Link>
-        </Container>
+        </Tela>
     );
 
 }
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-
-    input{
-        width: 303px;
-        height: 45px;
-
-        background: #FFFFFF;
-        border: 1px solid #D5D5D5;
-        border-radius: 5px;
-    }
-
-    p{
-        font-weight: 400;
-        font-size: 13.976px;
-        line-height: 17px;
-        text-decoration-line: underline;
-
-        color: #52B6FF;
-        cursor: pointer;
-    }
-`;
-

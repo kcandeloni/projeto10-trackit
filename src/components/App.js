@@ -1,8 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import styled from 'styled-components';
-
 import Login from './Login';
 import Cadastro from './Cadastro';
+import { Container } from '../assets/style/body';
+import PrivatePage from "./PrivatePage";
+import Habitos from './Habitos';
+import Hoje from './Hoje';
+import Historico from './Historico';
 
 export default function App() {
 
@@ -12,16 +15,20 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Login />}/>
                     <Route path='/cadastro' element={<Cadastro />}/>
+                    <Route path='/habitos' element={
+                        <PrivatePage>
+                            <Habitos />
+                        </PrivatePage>}/>
+                    <Route path='/Hoje' element={
+                        <PrivatePage>
+                            <Hoje />
+                        </PrivatePage>}/>
+                    <Route path='/historico' element={
+                        <PrivatePage>
+                            <Historico />
+                        </PrivatePage>}/>
                 </Routes>
             </BrowserRouter>
       </Container>
     );
 }
-
-const Container = styled.div`
-    width: 100%;
-    
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-`;
