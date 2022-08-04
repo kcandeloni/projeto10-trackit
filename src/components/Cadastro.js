@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Logo } from '../assets/img/Logos.js';
-import { Button, Input, TextLink, Tela } from '../assets/style';
+import { Button, Input, TextLink, Tela } from './common';
 import { useState } from 'react';
 
 

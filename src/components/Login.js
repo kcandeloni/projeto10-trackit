@@ -1,15 +1,19 @@
 import { Logo } from '../assets/img/Logos.js';
-import { Button, Input, TextLink, Tela } from '../assets/style';
-import { useState, useEffect } from 'react';
+import { Button, Tela, Input, TextLink } from './common';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 import { login, setToken} from './trackitService';
 
+import React, { useContext, useState } from "react"
+import UserContext from "../contexts/UserContext";
+
 export default function Login () {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const { user, setUser } = useContext(UserContext);
 
     function handleForm(e) {
         e.preventDefault();
@@ -27,6 +31,7 @@ export default function Login () {
             .then(resposta => { 
                 console.log(resposta);
                 setToken(resposta.data.token);
+                setUser(resposta.data);
                 navigate('/habitos');})
             .catch(resposta => console.log(resposta))
     }

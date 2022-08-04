@@ -19,5 +19,4 @@ function Trackit () {
     );
 }
 
-
 export {Logo, Trackit};

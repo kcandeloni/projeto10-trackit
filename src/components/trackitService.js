@@ -20,7 +20,6 @@ function getToken() {
   return config;
 }
 
-
 function singUp(body) {
   const promise = axios.post(`${BASE_URL}/sign-up`, body);
   return promise;

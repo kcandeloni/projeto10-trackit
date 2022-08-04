@@ -59,7 +59,6 @@ a {
 body {
   font-family: 'Roboto', sans-serif;
   color: #293845;
-}
-`;
+}`;
 
 export default GlobalStyle;

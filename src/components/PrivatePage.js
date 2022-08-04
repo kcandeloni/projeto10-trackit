@@ -1,5 +1,6 @@
 import Topo from "./Topo";
 import { useNavigate } from "react-router-dom";
+import { ContainerPrivate } from "./common";
 
 import Habitos from "./Habitos";
 import Login from "./Login";
@@ -30,12 +31,14 @@ export default function PrivatePage({ children }) {
     if (now - timeLogged <= HORA_1) {
         return (
         <>
-            <Topo />
-            {children}
+            <ContainerPrivate>
+                <Topo />
+                {children}
+            </ContainerPrivate>
         </>
         );
     } else {
-        <h1>sessão expirada</h1>;
         setTimeout(()=> navigate("/"), 3000);
+        return(<h1>sessão expirada</h1>);
     }
 }

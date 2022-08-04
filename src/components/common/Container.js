@@ -8,7 +8,10 @@ const Container = styled.div`
     justify-content: center;
     align-items: baseline;
     
-    font-family: 'Lexend Deca', sans-serif;
+    body{
+        font-family: 'Lexend Deca', sans-serif;
+    }
+    
 
     *{
         box-sizing: border-box;
