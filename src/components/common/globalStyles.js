@@ -57,8 +57,8 @@ a {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #293845;
+	font-family: 'Lexend Deca', sans-serif;
+  	color: #293845;
 }`;
 
 export default GlobalStyle;

@@ -13,7 +13,7 @@ export default function SubTitulo({
 
 const TextSub = styled.h2`
     font-weight: 400;
-    font-size: 22.976px;
+    font-size: 23px;
 
     color: #126BA5;
 `;

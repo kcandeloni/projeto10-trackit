@@ -18,29 +18,29 @@ export default function App() {
     return (
         <>
         <GlobalStyle />
-            <Container>
-                <Wrapper>
-                    <UserContext.Provider value={{ user, setUser }}>
-                        <BrowserRouter>
-                            <Routes>
-                                <Route path='/' element={<Login />}/>
-                                <Route path='/cadastro' element={<Cadastro />}/>
-                                <Route path='/habitos' element={
-                                    <PrivatePage>
-                                        <Habitos />
-                                    </PrivatePage>}/>
-                                <Route path='/Hoje' element={
-                                    <PrivatePage>
-                                        <Hoje />
-                                    </PrivatePage>}/>
-                                <Route path='/historico' element={
-                                    <PrivatePage>
-                                        <Historico />
-                                    </PrivatePage>}/>
-                            </Routes>
-                        </BrowserRouter>
-                    </UserContext.Provider>
-                </ Wrapper>
+        <Container>
+            <Wrapper>
+                <UserContext.Provider value={{ user, setUser }}>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path='/' element={<Login />}/>
+                            <Route path='/cadastro' element={<Cadastro />}/>
+                            <Route path='/habitos' element={
+                                <PrivatePage>
+                                    <Habitos />
+                                </PrivatePage>}/>
+                            <Route path='/Hoje' element={
+                                <PrivatePage>
+                                    <Hoje />
+                                </PrivatePage>}/>
+                            <Route path='/historico' element={
+                                <PrivatePage>
+                                    <Historico />
+                                </PrivatePage>}/>
+                        </Routes>
+                    </BrowserRouter>
+                </UserContext.Provider>
+            </ Wrapper>
         </Container>
       </>
     );

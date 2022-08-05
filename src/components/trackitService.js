@@ -3,9 +3,11 @@ import axios from "axios";
 const BASE_URL =
   "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth";
 
-function setToken(token) {
-    const timestamp = +new Date();
-    localStorage.setItem("trackit", JSON.stringify({token, timestamp}));
+  function setToken({token, image, name}, setUser) {
+  const timestamp = +new Date();
+  localStorage.setItem("trackit", JSON.stringify({token, image, timestamp}));
+
+  setUser({token, image, name})
 }  
 
 function getToken() {

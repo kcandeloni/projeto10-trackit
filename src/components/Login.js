@@ -30,8 +30,8 @@ export default function Login () {
         promise
             .then(resposta => { 
                 console.log(resposta);
-                setToken(resposta.data.token);
-                setUser(resposta.data);
+                setToken({...resposta.data}, setUser);
+                console.log(user)
                 navigate('/habitos');})
             .catch(resposta => console.log(resposta))
     }

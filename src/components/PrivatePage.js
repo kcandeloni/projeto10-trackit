@@ -1,6 +1,7 @@
 import Topo from "./Topo";
 import { useNavigate } from "react-router-dom";
 import { ContainerPrivate } from "./common";
+import Menu from "./Menu";
 
 import Habitos from "./Habitos";
 import Login from "./Login";
@@ -13,7 +14,7 @@ const HORA_1 = SEC * 60 * 60;
 
 function renderError() {
   //localStorage.clear("trackit");
-  return <h1>VOCÊ NÃO É AUTORIZADO</h1>;
+  return <h1>ACESSO NÂO AUTORIZADO! FAÇA LOGIN!</h1>;
 }
 
 export default function PrivatePage({ children }) {
@@ -27,7 +28,7 @@ export default function PrivatePage({ children }) {
 
     const now = +new Date();
     const timeLogged = auth.timestamp;
-    console.log(now, timeLogged, HORA_1);
+    
     if (now - timeLogged <= HORA_1) {
         return (
         <>
@@ -35,6 +36,7 @@ export default function PrivatePage({ children }) {
                 <Topo />
                 {children}
             </ContainerPrivate>
+            <Menu />
         </>
         );
     } else {

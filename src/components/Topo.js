@@ -1,16 +1,26 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import UserContext from "../contexts/UserContext";
 import { Trackit } from "../assets/img/Logos";
 import styled from 'styled-components';
 
 export default function Topo() {
+  
+  const { user, setUser } = useContext(UserContext);
 
-  const { user } = useContext(UserContext);
-  console.log(user)
+  useEffect(() => {
+    const localUser = JSON.parse(localStorage.getItem('trackit'));
+    if(!user.image && !!localUser.image){
+      setUser(localUser)
+    }
+  }, []);
 
-    return <TopoApp>
-        <Trackit /> <FotoCapa src={user.image} alt={user.name}/>   
-        </TopoApp>;
+  return(
+      <TopoApp>
+          <Trackit /> 
+          <FotoCapa 
+            src={user.image ? user.image : 'https://http.cat/404'}
+            alt={user.name}/>
+      </TopoApp>);
 }
 
 const TopoApp = styled.div`

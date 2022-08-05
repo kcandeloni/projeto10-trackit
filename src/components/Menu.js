@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 import { Button, ContainerMenu } from './common';
+import { useNavigate } from "react-router-dom";
 import SuperButton from './SuperButon';
 
-let status = 75;
+let percentage = 75;
 
 export default function Menu() {
+    const navigate = useNavigate();
     return (
         <>
             <BottomMenu>
-                <Button color='white' >Hábitos</Button>
-                <SuperButton status={status} >Hoje</SuperButton>
-                <Button color='white' >Histórico</Button>
+                <Button onClick={() => navigate('/habitos')} color='white' >Hábitos</Button>
+                <SuperButton onClick={() => navigate('/hoje')} percentage={percentage} >Hoje</SuperButton>
+                <Button onClick={() => navigate('/historico')} color='white' >Histórico</Button>
             </BottomMenu>
         </>);
 }

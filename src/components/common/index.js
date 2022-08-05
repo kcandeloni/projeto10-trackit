@@ -8,7 +8,11 @@ import GlobalStyle from './globalStyles';
 import ContainerMenu from './ContainerMenu';
 import ContainerPrivate from './ContainerPrivate';
 import SubTitulo from './SubTitulo';
+import TextConteudo from './TextConteudo';
+import ContainerBox from './ContainerBox';
 
-export { Button, Input, TextLink, ContainerMenu, ContainerPrivate, SubTitulo,
+export { Button, Input, TextLink,
+    ContainerMenu, ContainerPrivate, SubTitulo,
+    TextConteudo, ContainerBox,
     Tela, Container, Wrapper, 
     GlobalStyle };
