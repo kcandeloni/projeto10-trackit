@@ -6,16 +6,17 @@ import { useState } from 'react';
 export default function MeusHabitos({habito, letraDia, atualizaHabitos: atualizaHabitos}) {
 
     function rederDia (day, index, diasHabito) {
+      let bcolor = '#FFFFFF';
+      let color = '#DBDBDB';
       if(diasHabito.indexOf(index) >= 0){
-        return(
-          <DaySelect key={index}>
-              {day}
-          </DaySelect>
-        );
+          bcolor = '#DBDBDB';
+          color = '#FFFFFF';
       }
       return(
-        <DayBox key={index}>
-              {day}
+          <DayBox key={index}
+              bcolor={bcolor}
+              color={color} >
+                  {day}
           </DayBox>
       );
     }
@@ -65,13 +66,8 @@ const DayBox = styled.div`
     justify-content: center;
     align-items: center;
     
-    background-color: #FFFFFF;
-    color: #DBDBDB;
-`;
-
-const DaySelect = styled (DayBox)`
-    background-color: #DBDBDB;
-    color: #FFFFFF;
+    background-color: ${(props) => props.bcolor};
+    color: ${(props) => props.color};
 `;
 
 const BotaoExclui = styled.div`

@@ -47,8 +47,23 @@ function getHabits() {
 function deleteHabits(id) {
   const config = getToken();
   console.log(id)
-  const promise = axios.delete(`${BASE_URL}/habits/${id}`,config);
+  const promise = axios.delete(`${BASE_URL}/habits/${id}`, config);
   return promise;
 }
 
-export { singUp, create, setToken, getToken, login, getHabits, deleteHabits};
+function getToday() {
+  const config = getToken();
+  const promise = axios.get(`${BASE_URL}/habits/today`, config);
+  return promise;
+}
+
+function checkHabit(id, op_url) {
+  const config = getToken();
+  console.log(config)
+  const promise = axios.post(`${BASE_URL}/habits/${id}/${op_url}`, {}, config);
+  return promise;
+}
+
+export { singUp, create, setToken,
+  getToken, login, getHabits,
+  deleteHabits, getToday, checkHabit};

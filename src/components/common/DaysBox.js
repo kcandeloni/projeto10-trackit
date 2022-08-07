@@ -9,7 +9,6 @@ export default function DaysBox({
     ...otherProps
 }) {
     const [select, setSelect] = useState(false);
-    console.log(days);
 
     function alteraDiaHabito(){
         const posicao = days.indexOf(index);

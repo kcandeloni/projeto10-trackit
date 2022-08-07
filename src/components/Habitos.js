@@ -18,7 +18,6 @@ export default function Habitos() {
 
     const letraDia = ['D','S','T','Q','Q','S','S'];
 
-
     function atualizaHabitos () {
         const promise = getHabits();
         promise
@@ -31,7 +30,8 @@ export default function Habitos() {
 
     useEffect(() => {
         atualizaHabitos();
-      }, []);
+      }, []);/* Colocar a função de atualizar detro do useEffect
+      e colocar a variavel de estado atualizar no vetor */
 
 
     function criaHabito (){
@@ -80,8 +80,10 @@ export default function Habitos() {
                             </DaysBox>)}
                     </Box>
                     <BotaoBox>
-                        <Button color='white' onClick={() => {setNameHabito('');
-            setDays([]);setAddHabito(false);}}>Calcelar</Button>
+                        <Button color='white' onClick={() => {
+                            setNameHabito('');
+                            setDays([]);
+                            setAddHabito(false);}}>Calcelar</Button>
                         <Button onClick={() => criaHabito()}>Salvar</Button>    
                     </BotaoBox>
                 </ContainerBox> 
