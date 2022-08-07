@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../assets/img/Logos.js';
 import { Button, Input, TextLink, Tela } from './common';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 import { singUp } from './trackitService';
@@ -12,6 +13,7 @@ export default function Cadastro () {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
+    const navigate = useNavigate();
 
     function handleForm(e) {
         e.preventDefault();
@@ -30,7 +32,11 @@ export default function Cadastro () {
         const promise = singUp(body);
 
         promise
-            .then(resposta => { console.log(resposta);})
+            .then(resposta => {
+                console.log(resposta);
+                if(resposta.statusText === 'Created'){
+                    navigate('/');
+                }})
             .catch(resposta => console.log(resposta))
     }
 

@@ -1,9 +1,9 @@
 import { Button, ContainerMenu, SubTitulo } from './common';
 
-export default function AddHabito({ addHabito, setAddHabito}) {
+export default function AddHabito({...otherProps}) {
     return (
         <ContainerMenu>
             <SubTitulo>Meus hábitos</SubTitulo> 
-            <Button onClick={() => setAddHabito(!addHabito)}size='tiny' >+</Button>   
+            <Button {...otherProps} size='tiny' >+</Button>   
         </ContainerMenu>);
 }

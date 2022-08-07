@@ -11,4 +11,6 @@ export default function ContainerPrivate ({ children,...otherProps }) {
 const BackgroundPrivate = styled.div`
   background-color: #E5E5E5;
   height: calc(100vh - 70px);
+  overflow-y: auto;
+  margin-bottom: 70px;
 `;

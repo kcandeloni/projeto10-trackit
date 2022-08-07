@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL =
-  "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth";
+  "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit";
 
   function setToken({token, image, name}, setUser) {
   const timestamp = +new Date();
@@ -23,12 +23,12 @@ function getToken() {
 }
 
 function singUp(body) {
-  const promise = axios.post(`${BASE_URL}/sign-up`, body);
+  const promise = axios.post(`${BASE_URL}/auth/sign-up`, body);
   return promise;
 }
 
 function login(body) {
-    const promise = axios.post(`${BASE_URL}/login`, body);
+    const promise = axios.post(`${BASE_URL}/auth/login`, body);
     return promise;
 }
 
@@ -38,4 +38,17 @@ function create(body) {
   return promise;
 }
 
-export { singUp, create, setToken, getToken, login};
+function getHabits() {
+  const config = getToken();
+  const promise = axios.get(`${BASE_URL}/habits`, config);
+  return promise;
+}
+
+function deleteHabits(id) {
+  const config = getToken();
+  console.log(id)
+  const promise = axios.delete(`${BASE_URL}/habits/${id}`,config);
+  return promise;
+}
+
+export { singUp, create, setToken, getToken, login, getHabits, deleteHabits};
