@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import UserContext from "../contexts/UserContext";
 import { Trackit } from "../assets/img/Logos";
 import styled from 'styled-components';
-import { getHabits } from "./trackitService";
 
 export default function Topo() {
   

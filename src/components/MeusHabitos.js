@@ -1,7 +1,6 @@
 import { ContainerBox } from './common';
 import styled from 'styled-components';
 import { deleteHabits } from './trackitService';
-import { useState } from 'react';
 
 export default function MeusHabitos({
     habito,
