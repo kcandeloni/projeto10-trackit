@@ -66,6 +66,9 @@ const Check = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    ion-icon{
+        --ionicon-stroke-width: 64px;
+    }
 `;
 
 const Detail = styled.div`

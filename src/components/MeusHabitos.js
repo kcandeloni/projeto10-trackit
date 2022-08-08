@@ -38,8 +38,8 @@ export default function MeusHabitos({
     return(
         <Box>
           {habito.name}
-          <BotaoExclui >
-              {<ion-icon onClick={() => deletar(habito.id)} name='trash-outline"'></ion-icon>}
+          <BotaoExclui onClick={() => deletar(habito.id)} >
+              <ion-icon name='trash-outline'></ion-icon>
           </BotaoExclui>
           <Days>
             {letraDia.map((day, index) => rederDia(day, index, habito.days))}
@@ -80,6 +80,5 @@ const BotaoExclui = styled.div`
     right: 10px;
     ion-icon{
       font-size: 16px;
-      
     }
 `;
