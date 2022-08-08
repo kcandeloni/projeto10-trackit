@@ -1,9 +1,9 @@
-import { Audio } from  'react-loader-spinner'
+import { Grid } from  'react-loader-spinner'
 
 export default function Load (){
 
     return(
-            <Audio
+            <Grid
             height = "80"
             width = "80"
             radius = "9"

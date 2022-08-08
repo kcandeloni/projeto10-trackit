@@ -13,6 +13,9 @@ const BASE_URL =
 function getToken() {
   const auth = JSON.parse(localStorage.getItem("trackit"))
   console.log(auth);
+  if(!auth){
+    return false
+  }
   const config = {
     headers: {
       Authorization: `Bearer ${auth.token}`

@@ -1,4 +1,5 @@
 import { ContainerMenu, SubTitulo, TextConteudo, ContainerBox } from "./common";
+import Load from "./Load";
 
 export default function Historico() {
 
@@ -11,7 +12,8 @@ export default function Historico() {
                     Em breve você poderá ver o histórico dos seus hábitos aqui!
                 </TextConteudo>
                 <ContainerBox>
-                    Página em processo de contrução...
+                    Página em contrução...
+                    
                 </ContainerBox>
             </>
     );

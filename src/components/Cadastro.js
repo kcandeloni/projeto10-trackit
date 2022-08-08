@@ -71,7 +71,7 @@ export default function Cadastro () {
 
                 <Input
                 type='text'
-                placeholder='image'
+                placeholder='image(url)'
                 onChange={(e) => setImage(e.target.value)}
                 value={image}
                 required

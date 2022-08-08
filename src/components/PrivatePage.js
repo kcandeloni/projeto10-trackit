@@ -13,7 +13,7 @@ const SEC = 1000;
 const HORA_1 = SEC * 60 * 60;
 
 function renderError() {
-  //localStorage.clear("trackit");
+  localStorage.clear("trackit");
   return <h1>ACESSO NÂO AUTORIZADO! FAÇA LOGIN!</h1>;
 }
 
@@ -41,6 +41,7 @@ export default function PrivatePage({ children }) {
         );
     } else {
         setTimeout(()=> navigate("/"), 3000);
+        localStorage.clear("trackit");
         return(<h1>sessão expirada</h1>);
     }
 }

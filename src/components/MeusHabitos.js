@@ -78,6 +78,7 @@ const BotaoExclui = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
+    cursor: pointer;
     ion-icon{
       font-size: 16px;
     }
