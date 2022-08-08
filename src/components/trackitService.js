@@ -12,7 +12,6 @@ const BASE_URL =
 
 function getToken() {
   const auth = JSON.parse(localStorage.getItem("trackit"))
-  console.log(auth);
   if(!auth){
     return false
   }
@@ -49,7 +48,6 @@ function getHabits() {
 
 function deleteHabits(id) {
   const config = getToken();
-  console.log(id)
   const promise = axios.delete(`${BASE_URL}/habits/${id}`, config);
   return promise;
 }
@@ -62,7 +60,6 @@ function getToday() {
 
 function checkHabit(id, op_url) {
   const config = getToken();
-  console.log(config)
   const promise = axios.post(`${BASE_URL}/habits/${id}/${op_url}`, {}, config);
   return promise;
 }

@@ -19,7 +19,6 @@ export default function Historico() {
         const promise = getHistory();
         promise
             .then(resposta => { 
-                console.log(resposta, 'Histórico')
                 setHistory(resposta.data);
             })
             .catch(resposta => console.log(resposta))
@@ -60,7 +59,7 @@ export default function Historico() {
                     <ContainerMenu>
                         <SubTitulo>Histórico</SubTitulo>
                     </ContainerMenu>
-                    {!!dataDay.day ? <TextConteudo>
+                    {history.length === 0 ? <TextConteudo>
                         Em breve você poderá ver o histórico dos seus hábitos aqui!
                     </TextConteudo> : ''}
                     <ContainerBox>

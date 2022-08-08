@@ -7,7 +7,6 @@ export default function HistoricoDia({
     dataDay,
     setOpenDay
 }) {
-    console.log(dataDay)
     return (
             <>
                 <ContainerMenu>

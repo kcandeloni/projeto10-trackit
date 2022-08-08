@@ -30,7 +30,7 @@ export default function TodayBox({
         if(!!id){
             const promise = checkHabit(id, status);
             promise
-                .then(resposta => { console.log(resposta, 'TodayBox')
+                .then(resposta => {
                     setAtualizar(!atualizar)})
                 .catch(resposta => console.log(resposta))
         }

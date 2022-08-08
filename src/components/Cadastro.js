@@ -23,7 +23,6 @@ export default function Cadastro () {
             image,
             password
         };
-        console.log(body);
         setEmail('');
         setPassword('');
         setName('');
@@ -33,7 +32,6 @@ export default function Cadastro () {
 
         promise
             .then(resposta => {
-                console.log(resposta);
                 if(resposta.statusText === 'Created'){
                     navigate('/');
                 }})

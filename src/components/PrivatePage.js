@@ -21,7 +21,6 @@ export default function PrivatePage({ children }) {
     const navigate = useNavigate();
 
     const auth = JSON.parse(localStorage.getItem("trackit"));
-        console.log(auth)
     if (!auth) {
         return renderError();
     }

@@ -17,7 +17,6 @@ export default function Hoje() {
         const promise = getToday();
         promise
             .then(resposta => { 
-                console.log(resposta, 'Today');
                 setListToday(resposta.data);
                 setProgresso(calc(resposta.data));
             })

@@ -25,14 +25,12 @@ export default function Habitos() {
         const promise = getHabits();
         promise
             .then(resposta => { 
-                console.log(resposta, 'Meus Habitos');
                 setLista(resposta.data);
             })
             .catch(resposta => console.log(resposta))
         const atualizar_progresso = getToday();
         atualizar_progresso
             .then(resposta => { 
-                console.log(resposta, 'Progresso Habitos');
                 setProgresso(calc(resposta.data));
             })
             .catch(resposta => console.log(resposta))
@@ -44,7 +42,6 @@ export default function Habitos() {
                 name: nomeHabito,
                 days
             };
-            console.log(body);
             setNameHabito('');
             setDays([]);
             
@@ -52,7 +49,6 @@ export default function Habitos() {
             setAddHabito(false);
             promise
                 .then(resposta => { 
-                    console.log(resposta);
                     setAtualizar(!atualizar);
                 })
                 .catch(resposta => console.log(resposta))

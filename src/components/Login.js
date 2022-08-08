@@ -29,7 +29,6 @@ export default function Login () {
           email,
           password
         };
-        console.log(body);
         setEmail('');
         setPassword('');
         
@@ -37,12 +36,10 @@ export default function Login () {
 
         promise
             .then(resposta => { 
-                console.log(resposta);
                 setToken({...resposta.data}, setUser);
-                console.log(user)
                 navigate('/habitos');})
             .catch(resposta => {
-                console.log(resposta)
+                console.log(resposta);
                 alert('Dados Inválidos!')})
     }
 

@@ -28,12 +28,10 @@ export default function MeusHabitos({
       const promise = deleteHabits(id);
       promise
       .then(resposta => { 
-          console.log(resposta);
           setAtualizar(!atualizar);
       })
-      .catch(resposta => console.log(resposta))
+      .catch(resposta => console.log('falha'))
     }
-    console.log(habito)
     return(
         <Box>
           {habito.name}

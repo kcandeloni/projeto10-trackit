@@ -16,10 +16,9 @@ export default function Menu() {
         const promise = getToday();
         promise
             .then(resposta => { 
-                console.log(resposta, 'Today');
                 setProgresso(calc(resposta.data));
             })
-            .catch(resposta => console.log(resposta))
+            .catch(resposta => console.log('falha'))
       }, []);
 
     return (
