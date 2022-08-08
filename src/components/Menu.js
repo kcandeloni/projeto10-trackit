@@ -18,7 +18,7 @@ export default function Menu() {
             .then(resposta => { 
                 setProgresso(calc(resposta.data));
             })
-            .catch(resposta => console.log('falha'))
+            .catch(resposta => console.log(resposta))
       }, []);
 
     return (

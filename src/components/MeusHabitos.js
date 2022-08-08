@@ -30,7 +30,7 @@ export default function MeusHabitos({
       .then(resposta => { 
           setAtualizar(!atualizar);
       })
-      .catch(resposta => console.log('falha'))
+      .catch(resposta => console.log(resposta))
     }
     return(
         <Box>

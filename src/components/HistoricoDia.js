@@ -15,8 +15,9 @@ export default function HistoricoDia({
                 </ContainerMenu>
                 
                 {dataDay.habits.map((elem, index) => 
-                <TodayBox key={index} {...elem} />)} 
-        
+                <TodayBox key={index}
+                    name={elem.name}
+                    done={elem.done} />)} 
             </>
     );
 }
