@@ -41,7 +41,9 @@ export default function Login () {
                 setToken({...resposta.data}, setUser);
                 console.log(user)
                 navigate('/habitos');})
-            .catch(resposta => console.log(resposta))
+            .catch(resposta => {
+                console.log(resposta)
+                alert('Dados Inválidos!')})
     }
 
     return (

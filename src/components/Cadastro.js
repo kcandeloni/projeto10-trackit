@@ -37,7 +37,9 @@ export default function Cadastro () {
                 if(resposta.statusText === 'Created'){
                     navigate('/');
                 }})
-            .catch(resposta => console.log(resposta))
+            .catch(resposta => {
+                console.log(resposta);
+                alert('Dados Inválidos!');})
     }
 
     return (

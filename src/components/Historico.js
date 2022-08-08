@@ -60,9 +60,9 @@ export default function Historico() {
                     <ContainerMenu>
                         <SubTitulo>Histórico</SubTitulo>
                     </ContainerMenu>
-                    <TextConteudo>
+                    {!!dataDay.day ? <TextConteudo>
                         Em breve você poderá ver o histórico dos seus hábitos aqui!
-                    </TextConteudo>
+                    </TextConteudo> : ''}
                     <ContainerBox>
                         <Ajuste>
                             <Calendar
@@ -95,7 +95,7 @@ const Day = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    color: #FFFFFF;
     cursor: pointer;
 `;
 
