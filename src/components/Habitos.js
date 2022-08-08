@@ -5,7 +5,9 @@ import { TextConteudo, ContainerBox,Input, Button, DaysBox } from './common';
 
 import React, { useContext, useEffect, useState } from 'react';
 import UserContext from '../contexts/UserContext';
-import { create, getHabits } from './trackitService';
+import { calc } from './CalcProgresso';
+
+import { create, getHabits, getToday } from './trackitService';
 
 export default function Habitos() {
 
@@ -13,12 +15,13 @@ export default function Habitos() {
     const [nomeHabito, setNameHabito] = useState('');
     const [days, setDays] = useState([]);
     const [lista, setLista] = useState([]);
+    const [atualizar, setAtualizar] = useState(false);
 
-    const { user, setUser } = useContext(UserContext);
+    const { setProgresso } = useContext(UserContext);
 
     const letraDia = ['D','S','T','Q','Q','S','S'];
 
-    function atualizaHabitos () {
+    useEffect(() => {
         const promise = getHabits();
         promise
             .then(resposta => { 
@@ -26,13 +29,14 @@ export default function Habitos() {
                 setLista(resposta.data);
             })
             .catch(resposta => console.log(resposta))
-    }
-
-    useEffect(() => {
-        atualizaHabitos();
-      }, []);/* Colocar a função de atualizar detro do useEffect
-      e colocar a variavel de estado atualizar no vetor */
-
+        const atualizar_progresso = getToday();
+        atualizar_progresso
+            .then(resposta => { 
+                console.log(resposta, 'Progresso Habitos');
+                setProgresso(calc(resposta.data));
+            })
+            .catch(resposta => console.log(resposta))
+      }, [atualizar]);
 
     function criaHabito (){
         if(!!nomeHabito.length && !!days.length){
@@ -49,7 +53,7 @@ export default function Habitos() {
             promise
                 .then(resposta => { 
                     console.log(resposta);
-                    atualizaHabitos();
+                    setAtualizar(!atualizar);
                 })
                 .catch(resposta => console.log(resposta))
         }
@@ -92,7 +96,8 @@ export default function Habitos() {
             key={index} 
             letraDia={letraDia}
             habito={habito}
-            atualizaHabitos={atualizaHabitos} />)) :
+            setAtualizar={setAtualizar}
+            atualizar={atualizar} />)) :
             <TextConteudo>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </TextConteudo>}

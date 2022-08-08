@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import { deleteHabits } from './trackitService';
 import { useState } from 'react';
 
-export default function MeusHabitos({habito, letraDia, atualizaHabitos: atualizaHabitos}) {
+export default function MeusHabitos({
+    habito,
+    letraDia,
+    setAtualizar,
+    atualizar }) {
 
     function rederDia (day, index, diasHabito) {
       let bcolor = '#FFFFFF';
@@ -26,7 +30,7 @@ export default function MeusHabitos({habito, letraDia, atualizaHabitos: atualiza
       promise
       .then(resposta => { 
           console.log(resposta);
-          atualizaHabitos();
+          setAtualizar(!atualizar);
       })
       .catch(resposta => console.log(resposta))
     }

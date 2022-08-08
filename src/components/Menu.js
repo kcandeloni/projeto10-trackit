@@ -3,15 +3,30 @@ import { Button, ContainerMenu } from './common';
 import { useNavigate } from "react-router-dom";
 import SuperButton from './SuperButon';
 
-let percentage = 75;
+import React, { useContext, useEffect } from "react"
+import UserContext from "../contexts/UserContext";
+import { getToday } from './trackitService';
+import { calc } from './CalcProgresso';
 
 export default function Menu() {
     const navigate = useNavigate();
+    const {progresso, setProgresso} = useContext(UserContext);
+
+    useEffect(() => {
+        const promise = getToday();
+        promise
+            .then(resposta => { 
+                console.log(resposta, 'Today');
+                setProgresso(calc(resposta.data));
+            })
+            .catch(resposta => console.log(resposta))
+      }, []);
+
     return (
         <>
             <BottomMenu>
                 <Button onClick={() => navigate('/habitos')} color='white' >Hábitos</Button>
-                <SuperButton onClick={() => navigate('/hoje')} percentage={percentage} >Hoje</SuperButton>
+                <SuperButton onClick={() => navigate('/hoje')} progresso={progresso} >Hoje</SuperButton>
                 <Button onClick={() => navigate('/historico')} color='white' >Histórico</Button>
             </BottomMenu>
         </>);

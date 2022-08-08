@@ -4,6 +4,7 @@ import { ContainerMenu, SubTitulo, TextConteudo } from './common';
 import dayjs from 'dayjs';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import 'dayjs/locale/pt-br';
+
 dayjs.extend(updateLocale)
 dayjs.updateLocale('pt-br', {
   weekdays: [
@@ -11,14 +12,18 @@ dayjs.updateLocale('pt-br', {
   ]
 })
 
-export default function ProgressoHoje() {
-    
+export default function ProgressoHoje({progresso}) {
+
     return (
         <DataProgresso>
             <SubTitulo>{dayjs().locale('pt-br').format('dddd')}, {dayjs().format('DD/MM')}</SubTitulo> 
-                <Progresso>
+                {progresso > 0 ?
+                <Progresso color='#8FC549'>
+                    {progresso}% dos hábitos concluídos
+                </Progresso>:
+                <Progresso color='#BABABA'>
                     Nenhum hábito concluído ainda 
-                </Progresso>
+                </Progresso>}
         </DataProgresso>);
 }
 
@@ -29,6 +34,7 @@ const DataProgresso = styled (ContainerMenu)`
 `;
 
 const Progresso = styled (TextConteudo)`
-    color: color: #BABABA;
+    color: ${(props) => props.color};
     padding: 0  0;
+    margin-top: 4px;
 `;

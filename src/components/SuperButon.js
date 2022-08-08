@@ -4,13 +4,13 @@ import 'react-circular-progressbar/dist/styles.css';
 
 export default function SuperButton({
     children,
-    percentage = 67,
+    progresso,
     ...otherProps
 }) {
     return (
         <ButtonBack {...otherProps} >
             <CircularProgressbar
-                value={percentage}
+                value={progresso}
                 text={children}
                 styles={buildStyles({
                 strokeLinecap: 'round',

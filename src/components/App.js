@@ -14,13 +14,14 @@ import Historico from './Historico';
 export default function App() {
 
     const [user, setUser] = useState({});
+    const [progresso, setProgresso] = useState(0);
 
     return (
         <>
         <GlobalStyle />
         <Container>
             <Wrapper>
-                <UserContext.Provider value={{ user, setUser }}>
+                <UserContext.Provider value={{ user, setUser, progresso, setProgresso }}>
                     <BrowserRouter>
                         <Routes>
                             <Route path='/' element={<Login />}/>
