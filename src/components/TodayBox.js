@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { checkHabit } from './trackitService';
 
 export default function TodayBox({
-    id,
+    id=false,
     done,
     name,
-    currentSequence,
-    highestSequence,
-    setAtualizar,
-    atualizar
+    currentSequence='',
+    highestSequence='',
+    setAtualizar='',
+    atualizar='',
     }) {
     function RenderDetail({children}){
         if(currentSequence === highestSequence && highestSequence !== 0){
@@ -27,21 +27,23 @@ export default function TodayBox({
     }
 
     function postCheck ( id, status ) {
-        const promise = checkHabit(id, status);
-        promise
-            .then(resposta => { console.log(resposta, 'TodayBox')
-                setAtualizar(!atualizar)})
-            .catch(resposta => console.log(resposta))
+        if(!!id){
+            const promise = checkHabit(id, status);
+            promise
+                .then(resposta => { console.log(resposta, 'TodayBox')
+                    setAtualizar(!atualizar)})
+                .catch(resposta => console.log(resposta))
+        }
     }
 
     return(
         <Box>
             <div>
                 {name}
-                <Detail>
+                {currentSequence !== '' ?<Detail>
                     <div>Sequência atual: <RenderDetail>{currentSequence} dias</RenderDetail></div>
                     Seu recorde: <RenderDetail>{highestSequence} dias</RenderDetail>
-                </Detail>
+                </Detail>: ''}
             </div>
             { done ?
                 <Check color='#8FC549' onClick={() => postCheck(id, 'uncheck')} >

@@ -67,6 +67,13 @@ function checkHabit(id, op_url) {
   return promise;
 }
 
+function getHistory() {
+  const config = getToken();
+  const promise = axios.get(`${BASE_URL}/habits/history/daily`, config);
+  return promise;
+}
+
 export { singUp, create, setToken,
   getToken, login, getHabits,
-  deleteHabits, getToday, checkHabit};
+  deleteHabits, getToday, checkHabit,
+  getHistory};
