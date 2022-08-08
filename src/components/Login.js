@@ -3,9 +3,9 @@ import { Button, Tela, Input, TextLink } from './common';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-import { login, setToken} from './trackitService';
+import { login, setToken, getToken} from './trackitService';
 
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import UserContext from "../contexts/UserContext";
 
 export default function Login () {
@@ -14,6 +14,14 @@ export default function Login () {
     const [password, setPassword] = useState('');
 
     const { user, setUser } = useContext(UserContext);
+
+    useEffect(() => {
+        const persistencia = getToken();
+        
+        if(!!persistencia.headers){
+            navigate('/habitos');
+        }
+      }, []);
 
     function handleForm(e) {
         e.preventDefault();
